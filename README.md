@@ -16,7 +16,32 @@ Criar um projeto colaborativo focado em coletar, analisar e prever tendências n
 
 - **Passo a passo:**
   1. Configurar webscraping de sites de emprego (Indeed, LinkedIn) para buscar vagas remotas no Brasil e EUA nas áreas: **Mobile, Full-stack, Back-end, Front-end, DevOps, UX+Design e Dados**.
-  2. Padronizar os dados coletados (títulos de cargos, localizações, salários) e armazená-los em um banco de dados escalável.
+  2. **Padronização dos Dados:** Definir os campos a serem extraídos de cada vaga e seus respectivos tipos, garantindo a qualidade e a utilidade para análise.
+    - **Justificativa da Escolha dos Campos:**
+        - É crucial coletar dados relevantes para responder às perguntas de negócio do projeto **jobhunter-x**, como: quais as áreas mais promissoras? Quais habilidades estão em alta? Qual a influência do inglês nas vagas internacionais? 
+        - Os campos escolhidos permitem análises comparativas entre Brasil e EUA, segmentação por área, senioridade e análise de tendências salariais. 
+        - A coleta da URL da vaga possibilita futuras consultas e análise detalhada de cada oportunidade.
+        - A inclusão do ID da vaga, site de pesquisa e URL de busca tornam o processo mais escalável, permitindo futuras adições de sites e garantindo que não haverá duplicidade de dados.
+
+    - **Campos e Tipos:**
+        - **ID (Inteiro):** Identificador único para cada vaga. **(Gerado durante a inserção no banco)**
+        - **ID da Vaga no Site (Texto):** ID único da vaga no site de emprego.
+        - **Site de Pesquisa (Texto):** Nome do site de onde a vaga foi extraída (Ex: Indeed, LinkedIn).
+        - **URL de Busca (Texto):** URL utilizada para encontrar a vaga, incluindo filtros.
+        - **URL da Vaga (Texto):** Link da vaga no site de emprego.
+        - **Área (Texto):** Área de atuação dentro de tecnologia (Ex: Dados, DevOps, Mobile).
+        - **Título (Texto):** Título da vaga.
+        - **Descrição (Texto):** Descrição da vaga, responsabilidades e requisitos.
+        - **Empresa (Texto):** Nome da empresa que oferece a vaga.
+        - **Senioridade (Texto):** Nível de experiência (Ex: Júnior, Pleno, Sênior).
+        - **Tipo de Contratação (Texto):** Tipo de contrato (Ex: PJ, CLT, Estágio).
+        - **Modalidade (Texto):** Detalhes sobre a forma de trabalho (Ex: Remoto, Híbrido, Presencial).
+        - **Data da Extração (Data):** Data em que a vaga foi coletada.
+        - **Localização (Texto):** Localização da vaga (cidade, estado, país).
+        - **Salário Raw (Texto):** Informação de salário bruta extraída do site.
+        - **Moeda (Texto):** Moeda original do salário informado na vaga.
+        - **Período de Remuneração (Texto):** Informa se o salário é mensal, anual, etc.
+        - **Salário Mensal em Reais (Número Decimal):** Salário padronizado em R$/mês para facilitar comparações.
   3. Implementar automação com **Airflow** para atualização contínua e coleta diária ou semanal.
 
 ---
